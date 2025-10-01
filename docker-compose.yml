@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  mqtt-logger:
+    image: mqtt-logger
+    container_name: mqtt-logger
+    environment:
+      - TZ=Pacific/Auckland
+      - MQTT_HOST=192.168.1.120
+      - MQTT_PORT=1883
+      - MQTT_USERNAME=mqttuser
+      - MQTT_PASSWORD=mqttuserpassword
+      - MQTT_TOPIC=logger/#
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
